@@ -1,0 +1,55 @@
+.testimony-section {
+	position: relative;
+}
+.testimony-section .owl-carousel {
+	margin: 0;
+}
+.testimony-section .owl-carousel .owl-stage-outer {
+	padding-bottom: 2em;
+	padding-top: 4em;
+	position: relative;
+}
+
+.testimony-wrap {
+	display: block;
+	position: relative;
+	padding: 30px;
+	border: 1px solid #f5f7f9;
+	background: #fff;
+	/* -webkit-box-shadow: 0px 3px 66px -24px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 3px 66px -24px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 3px 66px -24px rgba(0, 0, 0, 0.2); */
+}
+.testimony-wrap .user-img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: relative;
+	margin: 0 auto;
+	/* margin-top: -80px; */
+}
+.testimony-wrap .user-img .quote {
+	position: absolute;
+	bottom: -10px;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	background: #faa906;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+}
+.testimony-wrap .user-img .quote i {
+	color: #fff;
+}
+.testimony-wrap .name {
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 0;
+	color: #faa906;
+}
+.testimony-wrap .position {
+	font-size: 13px;
+	color: #8d9db9;
+}

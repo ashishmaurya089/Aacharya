@@ -1,0 +1,10 @@
+.text .number .count {
+  font-weight: 600;
+  font-size: 30px;
+  color: #FF0606;
+}
+
+.text .quoteline {
+  color: #929292 !important;
+  font-size: 14px !important;
+}

@@ -1,0 +1,27 @@
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: none;
+}
+
+button {
+  outline: none;
+}
+*:focus {
+  outline: 0 !important;
+}
+
+/* material Ui Css */
+/* .MuiButtonBase-root {
+	background: none;
+	border-radius: 4px;
+} */
+.staff a {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-right: 2px;
+}

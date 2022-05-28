@@ -1,0 +1,23 @@
+h4 {
+  color: #606e7f;
+}
+ul {
+  list-style: none; /* Remove default bullets */
+}
+ul > li > i {
+  color: #febb34;
+  margin-right: 10px;
+}
+.img-about {
+  height: 400px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1200px) {
+  .img-about {
+    height: 600px !important;
+  }
+}
+
