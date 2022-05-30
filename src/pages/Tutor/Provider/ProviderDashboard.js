@@ -44,7 +44,7 @@ function ProviderDashboard({ provider }) {
   const handleMessageLeads = (bool) => {
     setopenChatDrawer(bool);
   };
-  console.log(globalLeads ,'======================');
+  console.log(statistics, '======================');
   //   console.log("&&&",statistics);
   return (
     <>
@@ -112,7 +112,7 @@ function ProviderDashboard({ provider }) {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h6" className="my-2" align="center">
-              Tuition enquiries{" "}
+              Coaching Enquiries{" "}
               {statistics && statistics.globalLeads
                 ? statistics.globalLeads
                 : 0}
