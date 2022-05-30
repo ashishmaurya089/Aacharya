@@ -188,6 +188,7 @@ export default function TutorFiled({ providerType, updating }) {
 			setsplDegInstituteName(data.special_degrees.instituteName);
 			setsplDegDegreeName(data.special_degrees.name);
 			setsplDegBranchName(data.special_degrees.branch);
+			// setspSpecializationName(data.special_degrees.)
 			setsplDegCompletionYear(data.special_degrees.yearOfCompletion);
 		}
 
@@ -261,6 +262,7 @@ export default function TutorFiled({ providerType, updating }) {
 
 	const uploadAwardProof = (event) => {
 		debugger
+		//console.log('clicking uploadWorkProof');
 		const uploadedFile = event.target.files[0];
 		const formData = new FormData();
 		formData.append('file', uploadedFile);

@@ -58,12 +58,13 @@ export default function InstituteFiled({ providerType, updating }) {
 		InstOnboardingCompleted,
 	} = useSelector((state) => state.tutorsData);
 	// Uploaded Proofs Redux State
-	const { backdrop, firmProof, headProof, profileImage } = useSelector(
+	const { backdrop, firmProof, headProof, recogProof, profileImage } = useSelector(
 		(state) => state.commonData
 	);
 
 	// Options Info
 	useEffect(() => {
+		debugger
 		dispatch(getOptionsForProviderProfile());
 		dispatch(getInstituteConfig());
 	}, [providerType]);
@@ -93,6 +94,7 @@ export default function InstituteFiled({ providerType, updating }) {
 	const [backdropImg, setbackdropImg] = useState('');
 	const [logoImg, setlogoImg] = useState('');
 	const [idproofImg, setidproofImg] = useState('');
+	const [recognitionproofImg, setrecognitionproofImg] = useState('');
 	const [firmProofImg, setfirmProofImg] = useState('');
 	const [requestedLevelIds, setrequestedLevelIds] = useState([]);
 	const [preRequestedLevelIds, setpreRequestedLevelIds] = useState([]);
@@ -101,19 +103,23 @@ export default function InstituteFiled({ providerType, updating }) {
 	const [preferenceCoaching, setpreferenceCoaching] = useState(false);
 	const [preferenceLive, setpreferenceLive] = useState(false);
 	useEffect(() => {
-		if (profileImage) {
+		debugger
+		if (profileImage && profileImage.length) {
 			setlogoImg(profileImage);
 		}
-		if (backdrop) {
+		if (backdrop && backdrop.length) {
 			setbackdropImg(backdrop[0]);
 		}
-		if (firmProof) {
+		if (firmProof && firmProof.length) {
 			setfirmProofImg(firmProof[0]);
 		}
-		if (headProof) {
+		if (headProof && headProof.length) {
 			setidproofImg(headProof[0]);
 		}
-	}, [profileImage, backdrop, firmProof, headProof]);
+		if (recogProof && recogProof.length) {
+			setrecognitionproofImg(recogProof[0]);
+		}
+	}, [profileImage, backdrop, firmProof, headProof, recogProof]);
 
 	//   SETTING INITIAL FIELDS IF IS AVAILABLE
 	useEffect(() => {
@@ -123,6 +129,7 @@ export default function InstituteFiled({ providerType, updating }) {
 	}, [providerProfile]);
 
 	const setInitialFields = (data) => {
+		debugger
 		setbackdropImg(data.instituteBackdrop);
 		setlogoImg(data.instituteLogo);
 		setinstituteRegister(data.instituteRegistrationType);
@@ -138,11 +145,13 @@ export default function InstituteFiled({ providerType, updating }) {
 		setstate(ctcAddress.State);
 		setcountry(ctcAddress.Country);
 		setinstituteWebsite(data.instituteWebsite);
+		setselectedDay(data)
 		// setinstituteTeachingPrefer(data.instituteTeachingPreferences);
 		setinstituteOpenOn(data.instituteOpenOn);
 		setavailability(data.availability);
 		setpreRequestedLevelIds(data.requestedLevels);
 		setidproofImg(data.identityProof);
+		setrecognitionproofImg(data.recognitionProofImg)
 		setfirmProofImg(data.workIdentity);
 
 		// setpreference
@@ -230,13 +239,13 @@ export default function InstituteFiled({ providerType, updating }) {
 		dispatch(uploadDocuments(type, formData));
 	};
 	const uploadrecognitionsProof = (event) => {
+		debugger
 		const uploadedFile = event.target.files[0];
 		const formData = new FormData();
 		formData.append('file', uploadedFile);
 		let type = 'RecognitionsProof';
 		dispatch(uploadDocuments(type, formData));
 	};
-
 	const handleMapLocation = () => {
 		setopenMap(true);
 	};
@@ -296,8 +305,9 @@ export default function InstituteFiled({ providerType, updating }) {
 			requestedLevels: preRequetestedIds,
 			availability: availability,
 			instituteOpenOn: instituteOpenOn,
-			identityProof: firmProofImg,
-			workIdentity: idproofImg,
+			identityProof: idproofImg,
+			recognitionProofImg: recognitionproofImg,
+			workIdentity: firmProofImg,
 		};
 
 		if (!backdropImg) {
@@ -405,7 +415,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Name of the Head'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -418,7 +428,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Contact Address'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -431,7 +441,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Locality'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -444,7 +454,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='City'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -457,7 +467,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='State'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -470,7 +480,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Country'
-							autoFocus
+
 						/>
 					</Grid>
 					{updating && (
@@ -497,7 +507,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Coaching Center Telephone'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -511,7 +521,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							margin='normal'
 							fullWidth={true}
 							label='Coaching Center Email'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -524,7 +534,7 @@ export default function InstituteFiled({ providerType, updating }) {
 							required
 							fullWidth={true}
 							label='Coaching Center Website (Optional)'
-							autoFocus
+
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -903,26 +913,57 @@ export default function InstituteFiled({ providerType, updating }) {
 							</Button>
 						</label>
 					</Grid>
-					<Grid item xs={6}>
-						<input
-							accept='image/*'
-							className={classes.input}
-							id='contained-button-head-file'
-							multiple
-							type='file'
-							onChange={(event) => uploadrecognitionsProof(event)}
-						/>
-						<label htmlFor='contained-button-head-file' className='w-100'>
-							<Button
-								fullWidth={true}
-								variant='contained'
-								color='primary'
-								component='span'
-								startIcon={<CloudUpload />}
-							>
-								Proof Of Recognition
-							</Button>
-						</label>
+					<Grid item xs={12}>
+						<Grid item xs={6}>
+							<Card>
+								{recognitionproofImg ? (
+									<>
+										<CardHeader
+											className={classes.uploadMediaHeader}
+											action={
+												<IconButton
+													aria-label='settings'
+													onClick={() => setrecognitionproofImg('')}
+												>
+													<Cancel />
+												</IconButton>
+											}
+										/>
+										<CardMedia
+											className={classes.uploadMedia}
+											component='img'
+											image={recognitionproofImg}
+											title='Proof Of Recognition'
+										/>
+									</>
+								) : (
+									<Typography variant='h5' className={classes.noMedia}>
+										Nothing to preview
+									</Typography>
+								)}
+							</Card>
+						</Grid>
+						<Grid item xs={6}>
+							<input
+								accept='image/*'
+								className={classes.input}
+								id='contained-button-head-file-recognitions'
+								multiple
+								type='file'
+								onChange={(event) => uploadrecognitionsProof(event)}
+							/>
+							<label htmlFor='contained-button-head-file-recognitions' className='w-100'>
+								<Button
+									fullWidth={true}
+									variant='contained'
+									color='primary'
+									component='span'
+									startIcon={<CloudUpload />}
+								>
+									Proof Of Recognition
+								</Button>
+							</label>
+						</Grid>
 					</Grid>
 					<Grid item xs={12}>
 						<Button

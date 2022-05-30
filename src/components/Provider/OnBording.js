@@ -26,7 +26,6 @@ export default function OnBording() {
 	// User Location Accessing
 	const location = useGeoLocation();
 	useEffect(() => {
-		debugger
 		if (location && location.coordinates && location.coordinates.length > 0) {
 			dispatch(updateLocation(location.coordinates));
 		}

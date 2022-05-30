@@ -15,6 +15,7 @@ import {
 	GET_FIRM_PROOF,
 	GET_GALLERY,
 	GET_HEAD_PROOF,
+	GET_RECOGNITION_PROOF,
 	GET_ID_PROOF,
 	GET_LOGO,
 	GET_REFERRAL_CODE,
@@ -194,7 +195,7 @@ export const uploadDocuments =
 				} else if (type === 'RecognitionsProof') {
 					toast.success('Recognitions Proof Uploaded');
 					dispatch({
-						type: GET_FIRM_PROOF,
+						type: GET_RECOGNITION_PROOF,
 						payload: data.data,
 					});
 				} else if (type === 'InstituteHeadIdProof') {

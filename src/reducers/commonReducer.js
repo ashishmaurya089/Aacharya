@@ -8,6 +8,7 @@ import {
 	GET_FIRM_PROOF,
 	GET_GALLERY,
 	GET_HEAD_PROOF,
+	GET_RECOGNITION_PROOF,
 	GET_ID_PROOF,
 	GET_LOGO,
 	GET_REFERRAL_CODE,
@@ -24,6 +25,7 @@ const initialState = {
 	banners: [],
 	idProof: [],
 	workProof: [],
+	recogProof:[],
 	highestProof: [],
 	awardProof: [],
 	degreeProof: [],
@@ -95,6 +97,11 @@ export const commonReducer = (state = initialState, action) => {
 			return {
 				...state,
 				headProof: payload,
+			};
+		case GET_RECOGNITION_PROOF:
+			return {
+				...state,
+				recogProof: payload,
 			};
 		case GET_REFERRAL_CODE:
 			return {

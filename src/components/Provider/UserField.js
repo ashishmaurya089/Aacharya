@@ -48,8 +48,8 @@ export default function UserField({ providerType }) {
 	const [isLearner, setisLearner] = useState(false);
 	const [isParent, setisParent] = useState(false);
 
-	const [ugDegreeName, setugDegreeName] = useState('');
-	const [pgDegreeName, setpgDegreeName] = useState('');
+	const [studentDegreeName, setStudentDegreeName] = useState('');
+	const [parentWorkName, setparentWorkName] = useState('');
 
 	useEffect(() => {
 		if (profileImage) {
@@ -65,6 +65,7 @@ export default function UserField({ providerType }) {
 	};
 
 	const handleSave = (type) => {
+		debugger
 		let formData = {
 			// surname: surname,
 			name: name,
@@ -72,7 +73,8 @@ export default function UserField({ providerType }) {
 			isLearner: isLearner,
 			isParent: isParent,
 			profileImage: profileImg,
-			// : pgDegreeName,
+			studentEducation : studentDegreeName,
+			parentWork :parentWorkName,
 		};
 
 		if (!profileImg) {
@@ -159,8 +161,8 @@ export default function UserField({ providerType }) {
 						fullWidth={true}
 						label='Educational *'
 						variant='outlined'
-						value={pgDegreeName}
-						onChange={(e) => setpgDegreeName(e.target.value)}
+						value={studentDegreeName}
+						onChange={(e) => setStudentDegreeName(e.target.value)}
 					>
 						<MenuItem value="school">School</MenuItem>
 						<MenuItem value="inter">Inter</MenuItem>
@@ -179,8 +181,8 @@ export default function UserField({ providerType }) {
 						fullWidth={true}
 						label='Profession *'
 						variant='outlined'
-						value={pgDegreeName}
-						onChange={(e) => setpgDegreeName(e.target.value)}
+						value={parentWorkName}
+						onChange={(e) => setparentWorkName(e.target.value)}
 					>
 						<MenuItem >Pvt. Employee</MenuItem>
 						<MenuItem >Govt.employee</MenuItem>

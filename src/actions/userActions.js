@@ -169,6 +169,7 @@ export const searchingOrganisation =
 	};
 export const updateProfile =
 	(body, homeRoute) => async (dispatch, getState) => {
+		debugger
 		dispatch({
 			type: 'SET_LOADING',
 			payload: true,

@@ -66,6 +66,7 @@ const Requirement = () => {
   const [priceOption, setPriceOption] = useState([{ value: 0 }, { value: 25000 }]);
 
   const getConfig = async () => {
+    debugger
     const { data } = await axios.get('/api/users/getPYRConfig');
     Object.keys(data).map((option) => {
       if (option != 'incognitoImages') {
