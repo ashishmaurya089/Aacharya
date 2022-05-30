@@ -288,6 +288,18 @@ export default function TutorFiled({ providerType, updating }) {
 
 		history.push(route);
 	};
+		const PGDegreeInValid = () => {
+			debugger
+			if (hasPg == true && pgInstituteName != "" && pgDegreeName  != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear!="") {
+				return null;
+			} else if (hasPg == false) {
+				return null;
+			}
+			else {
+				return 'Please fill all required fields Post Graduation degree';
+			}
+		}
+
 	const isSpecialDegreeInValid = () => {
 		debugger
 		if (hasSplDeg == true && splDegInstituteName != "" && splDegDegreeName  != "" && splDegBranchName != "" && splDegCompletionYear != "") {
@@ -414,13 +426,17 @@ debugger
 		};
 
 		if (ugInstituteName != "" && ugDegreeName != "" && ugBranchName != "" && ugCompletionYear != "") {
-			if (pgInstituteName != "" && pgDegreeName != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear != "") {
+			// if (pgInstituteName != "" && pgDegreeName != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear != "") {
+				if (PGDegreeInValid()) {
+					toast.error(PGDegreeInValid());
+					return;
+				}
 				if (isSpecialDegreeInValid()) {
 					toast.error(isSpecialDegreeInValid());
 					return;
 				}
-				if (avgRatePerMonth != "") {
-					if (avgRatePerMonth != "") {
+				if (shortTerm != false && avgRatePerHr != "") {
+					if (avgRatePerMonth != "" && monthly !=false) {
 						if (!profileImg) {
 							toast.error("Profile image can't be empty");
 						} else if (!name) {
@@ -440,14 +456,14 @@ debugger
 							}
 						}
 					} else {
-						toast.error(" Please fill Estimate Amount / Month");
+						toast.error(" Please fill Short Term Tution	");
 					}
 				} else {
-					toast.error(" Please fill Estimate Amount / Hour");
+					toast.error(" Please fill Montly Tution");
 				}
-			} else {
-				toast.error(" Please fill all required fields Post Graduation degree");
-			}
+			// } else {
+			// 	toast.error(" Please fill all required fields Post Graduation degree");
+			// }
 		}
 		else {
 			toast.error(" Please fill all required fields Graduation degree");
