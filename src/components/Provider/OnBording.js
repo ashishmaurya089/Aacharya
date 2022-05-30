@@ -27,7 +27,7 @@ export default function OnBording() {
 	const location = useGeoLocation();
 	useEffect(() => {
 		debugger
-		if (location && location.coordinates.length > 0) {
+		if (location && location.coordinates && location.coordinates.length > 0) {
 			dispatch(updateLocation(location.coordinates));
 		}
 	}, [location]);
