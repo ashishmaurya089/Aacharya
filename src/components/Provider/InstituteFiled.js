@@ -145,7 +145,7 @@ export default function InstituteFiled({ providerType, updating }) {
 		setstate(ctcAddress.State);
 		setcountry(ctcAddress.Country);
 		setinstituteWebsite(data.instituteWebsite);
-		setselectedDay(data)
+		// setselectedDay(data)
 		// setinstituteTeachingPrefer(data.instituteTeachingPreferences);
 		setinstituteOpenOn(data.instituteOpenOn);
 		setavailability(data.availability);
@@ -268,6 +268,7 @@ export default function InstituteFiled({ providerType, updating }) {
 	};
 
 	const handleSave = (type) => {
+		debugger
 		let preRequetestedIds = preRequestedLevelIds.map((value) => {
 			if (updating) {
 				return value;
