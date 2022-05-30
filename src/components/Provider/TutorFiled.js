@@ -63,7 +63,7 @@ export default function TutorFiled({ providerType, updating }) {
 	const { providerProfileOptions, loading, tutOnboardingCompleted } =
 		useSelector((state) => state.tutorsData);
 	// Proofs Redux State
-	const { profileImage, idProof, workProof, degreeProof,awardProof,highestProof } = useSelector(
+	const { profileImage, idProof, workProof, degreeProof, awardProof, highestProof } = useSelector(
 		(state) => state.commonData
 	);
 
@@ -132,7 +132,7 @@ export default function TutorFiled({ providerType, updating }) {
 		if (profileImage && profileImage.length) {
 			setprofileImg(profileImage);
 		}
-		if (idProof && idProof.length ) {
+		if (idProof && idProof.length) {
 			settutorIdProof(idProof[0]);
 		}
 		if (workProof && workProof.length) {
@@ -144,7 +144,7 @@ export default function TutorFiled({ providerType, updating }) {
 		if (highestProof && highestProof.length) {
 			setTutorHighestDocuments(highestProof[0]);
 		}
-	}, [profileImage, idProof, workProof, degreeProof ,awardProof ,highestProof]);
+	}, [profileImage, idProof, workProof, degreeProof, awardProof, highestProof]);
 
 	useEffect(() => {
 		if (providerProfile) {
@@ -288,21 +288,21 @@ export default function TutorFiled({ providerType, updating }) {
 
 		history.push(route);
 	};
-		const PGDegreeInValid = () => {
-			debugger
-			if (hasPg == true && pgInstituteName != "" && pgDegreeName  != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear!="") {
-				return null;
-			} else if (hasPg == false) {
-				return null;
-			}
-			else {
-				return 'Please fill all required fields Post Graduation degree';
-			}
+	const PGDegreeInValid = () => {
+		debugger
+		if (hasPg == true && pgInstituteName != "" && pgDegreeName != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear != "") {
+			return null;
+		} else if (hasPg == false) {
+			return null;
 		}
+		else {
+			return 'Please fill all required fields Post Graduation degree';
+		}
+	}
 
 	const isSpecialDegreeInValid = () => {
 		debugger
-		if (hasSplDeg == true && splDegInstituteName != "" && splDegDegreeName  != "" && splDegBranchName != "" && splDegCompletionYear != "") {
+		if (hasSplDeg == true && splDegInstituteName != "" && splDegDegreeName != "" && splDegBranchName != "" && splDegCompletionYear != "") {
 			return null;
 		} else if (hasSplDeg == false) {
 			return null;
@@ -313,7 +313,7 @@ export default function TutorFiled({ providerType, updating }) {
 	}
 
 	const handleSave = (type) => {
-debugger
+		debugger
 		let formData = {
 			providerType: 'tutor',
 			salutation: salutation,
@@ -368,7 +368,7 @@ debugger
 			workIdentity: tutorWorkProof,
 			degreeProofs: tutorHighestDocuments,
 			profileImage: profileImg,
-			awardProof:tutorAwardProof,
+			awardProof: tutorAwardProof,
 		};
 		let updateFormData = {
 			providerType: 'tutor',
@@ -422,45 +422,45 @@ debugger
 			workIdentity: tutorWorkProof,
 			degreeProofs: tutorHighestDocuments,
 			profileImage: profileImg,
-			awardProof:tutorAwardProof,
+			awardProof: tutorAwardProof,
 		};
 
 		if (ugInstituteName != "" && ugDegreeName != "" && ugBranchName != "" && ugCompletionYear != "") {
 			// if (pgInstituteName != "" && pgDegreeName != "" && pgBranchName != "" && pgSpecializationName != "" && pgCompletionYear != "") {
-				if (PGDegreeInValid()) {
-					toast.error(PGDegreeInValid());
-					return;
-				}
-				if (isSpecialDegreeInValid()) {
-					toast.error(isSpecialDegreeInValid());
-					return;
-				}
-				if (shortTerm != false && avgRatePerHr != "") {
-					if (avgRatePerMonth != "" && monthly !=false) {
-						if (!profileImg) {
-							toast.error("Profile image can't be empty");
-						} else if (!name) {
-							toast.error('Please fill your name');
-						} else if (!address || !locality || !city || !state || !country) {
-							toast.error('Please fill the contact adrress');
-						} else if (!hasUg) {
-							toast.error("Graduation degree can't be empty");
-						} else if (tutorIdProof == undefined || tutorHighestDocuments.length == 0) {
-							toast.error('Please upload your proofs');
-						} else {
-
-							if (updating) {
-								dispatch(updateTutorProfile(type, updateFormData, homeRoute));
-							} else {
-								dispatch(updateTutorProfile(type, formData, homeRoute));
-							}
-						}
+			if (PGDegreeInValid()) {
+				toast.error(PGDegreeInValid());
+				return;
+			}
+			if (isSpecialDegreeInValid()) {
+				toast.error(isSpecialDegreeInValid());
+				return;
+			}
+			if (shortTerm != false && avgRatePerHr != "") {
+				if (avgRatePerMonth != "" && monthly != false) {
+					if (!profileImg) {
+						toast.error("Profile image can't be empty");
+					} else if (!name) {
+						toast.error('Please fill your name');
+					} else if (!address || !locality || !city || !state || !country) {
+						toast.error('Please fill the contact adrress');
+					} else if (!hasUg) {
+						toast.error("Graduation degree can't be empty");
+					} else if (tutorIdProof == undefined || tutorHighestDocuments.length == 0) {
+						toast.error('Please upload your proofs');
 					} else {
-						toast.error(" Please fill Short Term Tution	");
+
+						if (updating) {
+							dispatch(updateTutorProfile(type, updateFormData, homeRoute));
+						} else {
+							dispatch(updateTutorProfile(type, formData, homeRoute));
+						}
 					}
 				} else {
 					toast.error(" Please fill Montly Tution");
 				}
+			} else {
+				toast.error(" Please fill Short Term Tution	");
+			}
 			// } else {
 			// 	toast.error(" Please fill all required fields Post Graduation degree");
 			// }
