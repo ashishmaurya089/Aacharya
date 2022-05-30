@@ -290,7 +290,7 @@ export default function TutorFiled({ providerType, updating }) {
 	};
 	const isSpecialDegreeInValid = () => {
 		debugger
-		if (hasSplDeg == true && splDegInstituteName != "" && splDegDegreeName != "" && splDegBranchName != "" && spSpecializationName != "" && splDegCompletionYear != "") {
+		if (hasSplDeg == true && splDegInstituteName != "" && splDegDegreeName  != "" && splDegBranchName != "" && splDegCompletionYear != "") {
 			return null;
 		} else if (hasSplDeg == false) {
 			return null;
